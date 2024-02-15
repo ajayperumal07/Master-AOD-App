@@ -2,13 +2,13 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import datetime
-from pushbullet import Pushbullet
+
+#from pushbullet import Pushbullet
 
 
 st.title("Delivery Management")
 st.markdown("Select option from below")
-Push_API="o.YsbcZIdI3a94aC3bnXT4Znf4FQz2f77d"
-pb=Pushbullet(Push_API)
+
 
 OUTLETS=["Residency Road","Koramangala","Jayanagar","Bellandur","Whitefield","Marathahalli","Kalyan Nagar","SahakarNagar","E City","Domlur","Arekere"]
 conn=st.connection("gsheets", type=GSheetsConnection)
@@ -51,7 +51,7 @@ if action == "Place an Order":
                 conn.update(worksheet="Requests",data=updated_df)
                 
                 st.success("You submitted the order")
-                push=pb.push_note('New Order Received',outletname)
+                #push=pb.push_note('New Order Received',outletname)
 
 elif action=="View and Update Existing Orders":
     sql = '''
